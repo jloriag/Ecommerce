@@ -61,7 +61,7 @@ class ProductController extends Controller
   }
   
   public function index(){
-    $products=Product::get();
+    $products=Product::with("images")->get();
     if($products->count()>0){
       return ProductResource::collection($products);
     }else{
@@ -70,6 +70,7 @@ class ProductController extends Controller
   }
 
   public function show(Product $product){
+    $product->state();
         return new ProductResource($product);
   }
 
