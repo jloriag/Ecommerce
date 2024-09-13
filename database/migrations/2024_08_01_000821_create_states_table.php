@@ -19,7 +19,15 @@ return new class extends Migration
         });
         
         DB::table('states')->insert([
-            'name'=>'Activo'
+            'name'=>'Disponible'
+        ]);
+
+        DB::table('states')->insert([
+            'name'=>'Agotado'
+        ]);
+
+        DB::table('states')->insert([
+            'name'=>'En pausa'
         ]);
         
     }

@@ -13,7 +13,10 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'state_id'
+        'state_id',
+        'brand',
+        'amount',
+        'sku'
     ];
 
     public function state()

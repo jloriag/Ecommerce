@@ -18,6 +18,9 @@ return new class extends Migration
             $table->mediumText("description");
             $table->double("price");
             $table->unsignedBigInteger("state_id");
+            $table->string("brand");
+            $table->integer("amount");
+            $table->string('sku');
             $table->foreign("state_id")->references('id')->on('states')->onDelete('cascade');
         });
     }
