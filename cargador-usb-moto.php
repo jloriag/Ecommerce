@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Imágenes de ejemplo para cada artículo
     const images = {
-        "Camiseta": ["imagenes/cargador-usb-moto-portada.png"],
+        "Camiseta": ["imagenes/cargador-usb-moto-portada.png","imagenes/cargador-usb-moto-info.png"],
         "Gorra": ["gorra1.jpg", "gorra2.jpg", "gorra3.jpg"],
         "Mochila": ["mochila1.jpg", "mochila2.jpg", "mochila3.jpg"]
     };
