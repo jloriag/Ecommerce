@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Carrusel de imágenes del artículo -->
 <div class="carousel">
     <button class="left" onclick="prevImage()">⬅️</button>
-    <img id="itemImage" src="camiseta1.jpg" alt="Imagen del artículo">
+    <img id="itemImage" src="imagenes/cargador-usb-moto-portada.png" alt="Imagen del artículo">
     <button class="right" onclick="nextImage()">➡️</button>
 </div>
 
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Imágenes de ejemplo para cada artículo
     const images = {
-        "Camiseta": ["camiseta1.jpg", "camiseta2.jpg", "camiseta3.jpg"],
+        "Camiseta": ["imagenes/cargador-usb-moto-portada.png"],
         "Gorra": ["gorra1.jpg", "gorra2.jpg", "gorra3.jpg"],
         "Mochila": ["mochila1.jpg", "mochila2.jpg", "mochila3.jpg"]
     };
