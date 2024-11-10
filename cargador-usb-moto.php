@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="Transferencia bancaria">🏦 Transferencia bancaria</option>
         </select>
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="submit" onclick="nextStep()">Siguiente ➡️</button>
+        <button type="submit" >Siguiente ➡️</button>
     </div>
     
     <!-- Paso 6: Enviar comprobante de pago -->
