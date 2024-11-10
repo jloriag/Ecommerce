@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </select>
         
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="submit">Finalizar Compra ✅</button>
+        <button type="button" onclick="nextStep()">Siguiente ➡️</button>
     </div>
     
     <!-- Paso 6: Enviar comprobante de pago -->
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="comprobante_pago">💳 Comprobante de pago:</label>
         <input type="file" name="comprobante_pago" id="comprobante_pago" value="" />
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="submit">Finalizar Compra ✅</button>
+        <button type="button" onclick="nextStep()">Siguiente ➡️</button>
     </div>
     
 </form>
