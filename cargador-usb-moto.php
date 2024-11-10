@@ -104,6 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <!-- Paso 6: Enviar comprobante de pago -->
     <div class="step" id="step6">
+        <p>Gracias por tu compra! 🛒💸 Para completar el pedido, realiza la transferencia por Sinpe Móvil al número [número de teléfono] 📲.
+
+Una vez hecho el pago, por favor sube el comprobante aquí mismo para confirmar tu pedido. 📤🧾
+
+Si tienes alguna duda, ¡estamos aquí para ayudarte! 😊
+        </p>
         <label for="comprobante_pago">💳 Comprobante de pago:</label>
         <input type="file" name="comprobante_pago" id="comprobante_pago" value="" />
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
