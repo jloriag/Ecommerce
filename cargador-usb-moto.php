@@ -1,11 +1,44 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php'; // Asegúrate de que la ruta es correcta
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $articulo = $_POST['articulo'];
-    $cantidad = $_POST['cantidad'];
     $nombre = $_POST['nombre'];
     $direccion = $_POST['direccion'];
     $telefono = $_POST['telefono'];
     $metodo_pago = $_POST['metodo_pago'];
+    
+$mail = new PHPMailer(true);
+
+try {
+    // Configuración del servidor SMTP de Gmail
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'jozzlg@gmail.com'; // Tu dirección de correo de Gmail
+    $mail->Password = 'zvsmfldglsoiyuho'; // Contraseña de tu correo o contraseña de aplicación
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Habilita TLS en Gmail
+    $mail->Port = 587; // Puerto de Gmail para TLS
+
+    // Configuración del correo
+    $mail->setFrom('jozzlg@gmail.com', $nombre);
+    $mail->addAddress('jozzlg@gmail.com', 'Josue Loria'); // Añadir destinatario
+
+    // Contenido del correo
+    $mail->isHTML(true);
+    $mail->Subject = 'Compra de articulo';
+    $mail->Body    = 'Un nuevo cliente: '.$nombre.' ha comprado un:  cargador. </br>Su direccion es: '.$direccion.' </br>El telefono es: '.$telefono;
+    //$mail->AltBody = 'Este es el contenido del correo en texto plano para clientes que no soporten HTML.';
+
+    // Enviar el correo
+    $mail->send();
+    echo 'Correo enviado con éxito';
+} catch (Exception $e) {
+    echo "Error al enviar el correo: {$mail->ErrorInfo}";
+}
 
     echo "<h2>🎉 ¡Gracias por tu compra, $nombre!</h2>";
     echo "<p>Has comprado $cantidad unidad(es) de $articulo. El pedido será enviado a $direccion. 📦</p>";
@@ -26,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .step { display: none; }
         .step.active { display: block; }
         .step label { font-size: 1.2em; margin-top: 10px; display: block; }
-        .step input, .step select, .step button { width: 100%; padding: 10px; font-size: 1em; margin: 5px 0; }
+        .step input, .step select, .step button { width: 100%; padding: 10px; font-size: 1em; margin: 5px 0; box-sizing: border-box; }
         .step button { cursor: pointer; background-color: #4CAF50; color: white; border: none; }
         .step button:disabled { background-color: #ddd; cursor: not-allowed; }
         #compraForm { display: flex; flex-direction: column; }
@@ -49,68 +82,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="carousel">
     <button class="left" onclick="prevImage()">⬅️</button>
     <img id="itemImage" src="imagenes/cargador-usb-moto-portada.png" alt="Imagen del artículo">
-    <button class="right" onclick="nextImage()">➡️</button>
+    <button class="right" id="botonCambiarImagen" >➡️</button>
 </div>
 
 <form id="compraForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     
-    <!-- Paso 1: Selecciona la Cantidad -->
+    <!-- Paso 1: Nombre Completo -->
     <div class="step active" id="step1">
-        <label for="cantidad">🔢 Cantidad:</label>
-        <input type="number" name="cantidad" id="cantidad" min="1" required>
-        <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="button" onclick="nextStep()">Siguiente ➡️</button>
-    </div>
-    
-    <!-- Paso 2: Nombre Completo -->
-    <div class="step" id="step2">
         <label for="nombre">👤 Nombre completo:</label>
         <input type="text" name="nombre" id="nombre" required>
         
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="button" onclick="nextStep()">Siguiente ➡️</button>
+        <button type="button" onclick="nextStep('nombre')">Siguiente ➡️</button>
     </div>
     
-     <!-- Paso 3: Direccion de envío -->
-    <div class="step" id="step3">
+     <!-- Paso 2: Direccion de envío -->
+    <div class="step" id="step2">
         <label for="direccion">📍 Dirección de envío:</label>
         <input type="text" name="direccion" id="direccion" required>
         
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="button" onclick="nextStep()">Siguiente ➡️</button>
+        <button type="button" onclick="nextStep('direccion')">Siguiente ➡️</button>
     </div>
      
-     <!-- Paso 4: Telefono de contacto -->
-    <div class="step" id="step4">
+     <!-- Paso 3: Telefono de contacto -->
+    <div class="step" id="step3">
         
         <label for="telefono">☎️ Teléfono de contacto:</label>
         <input type="tel" name="telefono" id="telefono" required>
         
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="button" onclick="nextStep()">Siguiente ➡️</button>
+        <button type="button" onclick="nextStep('telefono')">Siguiente ➡️</button>
     </div>
     
-    <!-- Paso 5: Método de pago -->
-    <div class="step" id="step5">
+    <!-- Paso 4: Método de pago -->
+    <div class="step" id="step4">
         <label for="metodo_pago">💳 Método de pago:</label>
         <select name="metodo_pago" id="metodo_pago" required>
-            <option value="Sinpe Movil">💸📲 Sinpe Movil</option>
-            <option value="Transferencia bancaria">🏦 Transferencia bancaria</option>
+            <option value="Sinpe Movil">💸📲 Efectivo - Sinpe Movil / Contra Entrega - Envío dentro del GAM</option>
         </select>
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="submit" >Siguiente ➡️</button>
-    </div>
-    
-    <!-- Paso 6: Enviar comprobante de pago -->
-    <div class="step" id="step6">
-        <p>Gracias por tu compra! 🛒💸 </p> 
-        <p>Para completar el pedido, realiza la transferencia por Sinpe Móvil al número 85972117 📲. </p>
-        <p>Una vez hecho el pago, por favor sube el comprobante aquí mismo para confirmar tu pedido. 📤🧾</p>
-        <p>Si tienes alguna duda, ¡estamos aquí para ayudarte! 😊</p>
-        <label for="comprobante_pago">💳 Comprobante de pago:</label>
-        <input type="file" name="comprobante_pago" id="comprobante_pago" value="" />
-        <button type="button" onclick="prevStep()">⬅️ Anterior</button>
-        <button type="button" onclick="nextStep()">Siguiente ➡️</button>
+        <button onclick="return validarFormulario()" type="submit" >Finalizar compra ➡️</button>
     </div>
     
 </form>
@@ -128,8 +140,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
     }
 
-    function nextStep() {
-        if (currentStep < 7) {
+    function nextStep(str) {
+        if(document.getElementById(str).value==''){
+            alert(str+" debe ser ingresado");
+        }else if (currentStep < 8) {
             currentStep++;
             showStep(currentStep);
         }
@@ -148,16 +162,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         document.getElementById("itemImage").src = images[articulo][imageIndex];
     }
 
-    function nextImage() {
-        const articulo = document.getElementById("articulo").value;
-        imageIndex = (imageIndex + 1) % images[articulo].length;
-        document.getElementById("itemImage").src = images[articulo][imageIndex];
+    function actualizarImagen() {
+        imageIndex = (imageIndex + 1) % images.length;
+        document.getElementById("itemImage").src = images[imageIndex];
     }
 
     function prevImage() {
         imageIndex = (imageIndex - 1 + images.length) % images.length;
         document.getElementById("itemImage").src = images[imageIndex];
     }
+    
+    function validarFormulario(){
+        mostrarElementosPorClase("step");
+    }
+    
+    function mostrarElementosPorClase(str) {
+        const elementos = document.querySelectorAll("."+str);
+        elementos.forEach(elemento => {
+            elemento.style.display = "block"; // Cambia "block" según el tipo de elemento
+        });
+    }
+
+const boton = document.getElementById("botonCambiarImagen");
+boton.addEventListener("click", actualizarImagen);
+
+
 </script>
 
 </body>
