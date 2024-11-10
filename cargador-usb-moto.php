@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php'; // Asegúrate de que la ruta es correcta
 
+$nombreArticulo="Cargador USB Moto";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
@@ -36,15 +37,14 @@ try {
     // Enviar el correo
     $mail->send();
     echo 'Correo enviado con éxito';
-} catch (Exception $e) {
-    echo "Error al enviar el correo: {$mail->ErrorInfo}";
-}
-
     echo "<h2>🎉 ¡Gracias por tu compra, $nombre!</h2>";
-    echo "<p>Has comprado $cantidad unidad(es) de $articulo. El pedido será enviado a $direccion. 📦</p>";
+    echo "<p>Has comprado un $nombreArticulo. El pedido será enviado a $direccion. 📦</p>";
     echo "<p>Te contactaremos al ☎️ $telefono para cualquier novedad.</p>";
     echo "<p>Método de pago seleccionado: 💳 $metodo_pago</p>";
     exit();
+} catch (Exception $e) {
+    echo "Error al enviar el correo: {$mail->ErrorInfo}";
+
 }
 ?>
 
@@ -77,6 +77,7 @@ try {
 <body>
 
 <h1>🛒 Compra de Cargador USB Moto</h1>
+<h2>Precio: 9900</h2>
 
 <!-- Carrusel de imágenes del artículo -->
 <div class="carousel">
@@ -119,7 +120,7 @@ try {
     <div class="step" id="step4">
         <label for="metodo_pago">💳 Método de pago:</label>
         <select name="metodo_pago" id="metodo_pago" required>
-            <option value="Sinpe Movil">💸📲 Efectivo - Sinpe Movil / Contra Entrega - Envío dentro del GAM</option>
+            <option value="Efectivo - Sinpe Movil">💸📲 Efectivo - Sinpe Movil / Contra Entrega - Envío dentro del GAM</option>
         </select>
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
         <button onclick="return validarFormulario()" type="submit" >Finalizar compra ➡️</button>
