@@ -54,17 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <form id="compraForm" method="post" enctype="multipart/form-data">
     
-    <!-- Paso 1: Selección de artículo -->
-   <!-- <div class="step active" id="step1">
-        <label for="articulo">📦 Selecciona un artículo:</label>
-        <select name="articulo" id="articulo" onchange="updateImages()" required>
-            <option value="Camiseta">👕 Camiseta</option>
-            <option value="Gorra">🧢 Gorra</option>
-            <option value="Mochila">🎒 Mochila</option>
-        </select>
-        <button type="button" onclick="nextStep()">Siguiente ➡️</button>
-    </div> -->
-    
     <!-- Paso 1: Selecciona la Cantidad -->
     <div class="step active" id="step1">
         <label for="cantidad">🔢 Cantidad:</label>
@@ -83,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     
      <!-- Paso 3: Direccion de envío -->
-    <div class="step" id="step2">
+    <div class="step" id="step3">
         <label for="direccion">📍 Dirección de envío:</label>
         <input type="text" name="direccion" id="direccion" required>
         
@@ -91,8 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="button" onclick="nextStep()">Siguiente ➡️</button>
     </div>
      
-     <!-- Paso 4: Información de envío -->
-    <div class="step" id="step2">
+     <!-- Paso 4: Telefono de contacto -->
+    <div class="step" id="step4">
         
         <label for="telefono">☎️ Teléfono de contacto:</label>
         <input type="tel" name="telefono" id="telefono" required>
@@ -101,16 +90,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="button" onclick="nextStep()">Siguiente ➡️</button>
     </div>
     
-    
-    <!-- Paso 3: Método de pago -->
-    <div class="step" id="step3">
+    <!-- Paso 5: Método de pago -->
+    <div class="step" id="step5">
         <label for="metodo_pago">💳 Método de pago:</label>
         <select name="metodo_pago" id="metodo_pago" required>
-            <option value="Tarjeta de crédito">💳 Tarjeta de crédito</option>
-            <option value="PayPal">💸 PayPal</option>
+            <option value="Sinpe Movil">💸📲 Sinpe Movil</option>
             <option value="Transferencia bancaria">🏦 Transferencia bancaria</option>
         </select>
         
+        <button type="button" onclick="prevStep()">⬅️ Anterior</button>
+        <button type="submit">Finalizar Compra ✅</button>
+    </div>
+    
+    <!-- Paso 6: Enviar comprobante de pago -->
+    <div class="step" id="step6">
+        <label for="comprobante_pago">💳 Comprobante de pago:</label>
+        <input type="file" name="comprobante_pago" id="comprobante_pago" value="" />
         <button type="button" onclick="prevStep()">⬅️ Anterior</button>
         <button type="submit">Finalizar Compra ✅</button>
     </div>
