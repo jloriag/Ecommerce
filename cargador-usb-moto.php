@@ -120,9 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     let imageIndex = 0;
 
     // Imágenes de ejemplo para cada artículo
-    const images = {
-        "Camiseta": ["imagenes/cargador-usb-moto-portada.png","imagenes/cargador-usb-moto-info.png"]
-    };
+    const images = ["imagenes/cargador-usb-moto-portada.png","imagenes/cargador-usb-moto-info.png"];
 
     function showStep(step) {
         document.querySelectorAll('.step').forEach((div, index) => {
@@ -157,9 +155,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     function prevImage() {
-        const articulo = document.getElementById("articulo").value;
-        imageIndex = (imageIndex - 1 + images[articulo].length) % images[articulo].length;
-        document.getElementById("itemImage").src = images[articulo][imageIndex];
+        imageIndex = (imageIndex - 1 + images.length) % images.length;
+        document.getElementById("itemImage").src = images[imageIndex];
     }
 </script>
 
