@@ -37,14 +37,14 @@ try {
     // Enviar el correo
     $mail->send();
     echo 'Correo enviado con éxito';
+} catch (Exception $e) {
+    echo "Error al enviar el correo: {$mail->ErrorInfo}";
+}
     echo "<h2>🎉 ¡Gracias por tu compra, $nombre!</h2>";
     echo "<p>Has comprado un $nombreArticulo. El pedido será enviado a $direccion. 📦</p>";
     echo "<p>Te contactaremos al ☎️ $telefono para cualquier novedad.</p>";
     echo "<p>Método de pago seleccionado: 💳 $metodo_pago</p>";
     exit();
-} catch (Exception $e) {
-    echo "Error al enviar el correo: {$mail->ErrorInfo}";
-
 }
 ?>
 
