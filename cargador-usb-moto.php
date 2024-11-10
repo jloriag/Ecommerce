@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button class="right" onclick="nextImage()">➡️</button>
 </div>
 
-<form id="compraForm" method="post" enctype="multipart/form-data" action="">
+<form id="compraForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     
     <!-- Paso 1: Selecciona la Cantidad -->
     <div class="step active" id="step1">
