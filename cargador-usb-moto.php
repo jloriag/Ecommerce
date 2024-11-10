@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     function nextStep() {
-        if (currentStep < 4) {
+        if (currentStep < 7) {
             currentStep++;
             showStep(currentStep);
         }
