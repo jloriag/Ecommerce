@@ -72,6 +72,28 @@ try {
             label, button { font-size: 1em; }
             .step button { padding: 8px; }
         }
+        
+        /* Estilos para el ícono flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        .whatsapp-float:hover {
+            background-color: #20b455;
+        }
     </style>
 </head>
 <body>
@@ -189,6 +211,11 @@ boton.addEventListener("click", actualizarImagen);
 
 
 </script>
+
+    <!-- Ícono flotante de WhatsApp -->
+    <a href="https://wa.me/50685972117" target="_blank" class="whatsapp-float" title="Contáctanos por WhatsApp">
+        &#x1F4AC; <!-- Ícono de burbuja de mensaje como alternativa, puedes usar Font Awesome para el logo oficial de WhatsApp -->
+    </a>
 
 </body>
 </html>
