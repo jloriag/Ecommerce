@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php'; // Asegúrate de que la ruta es correcta
 
-$nombreArticulo="Cargador USB Moto";
+$nombreArticulo="Cargador de Motocicleta 12V USB";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
@@ -94,20 +94,74 @@ try {
         .whatsapp-float:hover {
             background-color: #20b455;
         }
+        
+                .stars {
+            display: inline-block;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .star {
+            color: lightgray; /* Color para estrellas "vacías" */
+            position: relative;
+        }
+        .star::before {
+            content: "★";
+        }
+        .star-filled {
+            color: gold; /* Color para estrellas "llenas" */
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            width: 0%; /* Ancho inicial */
+        }
+        
+        .scrollable-div {
+            width: 100%;           /* Ancho del div */
+            height: 100px;          /* Altura máxima visible antes de activar scroll */
+            overflow-y: auto;       /* Habilita el scroll vertical cuando se supera la altura */
+            padding: 10px;
+            border: 1px solid #ccc; /* Borde para hacer visible el div */
+            font-size: 16px;
+            line-height: 1.4;       /* Ajusta el interlineado */
+            white-space: pre-wrap;  /* Permite saltos de línea automáticos */
+        }
     </style>
 </head>
 <body>
 
-<h1>🛒 Compra de Cargador USB Moto</h1>
-<h2>Precio: 9900</h2>
+<h1>🛒 Compra de <?= $nombreArticulo ?></h1>
+<h2>Precio: ¢9900</h2>
 
+<p>Este producto tiene una clasificación de 4.3 de 5 en <a target="_blank" rel="nofollow" href="https://www.amazon.ca/Beedove-Motorcycle-Voltmeter-Waterproof-Motorbike/dp/B089LQVF2P#customerReviews">Amazon</a></p>
+    <div class="stars" id="star-rating">
+        <!-- Estrellas con contenido ajustable -->
+        <span class="star"><span class="star-filled">★</span></span>
+        <span class="star"><span class="star-filled">★</span></span>
+        <span class="star"><span class="star-filled">★</span></span>
+        <span class="star"><span class="star-filled">★</span></span>
+        <span class="star"><span class="star-filled">★</span></span>
+    </div>
+<h3>Pagas cuando recibes el producto 🫱🫲</h3>
+<h3>Envío rapido 📦💨</h3>
+<h3>Soporte por <a href="https://wa.me/50685972117" target="_blank" title="Contáctanos por WhatsApp"> WhatsApp</a></h3>
+    <div class="scrollable-div" id="limitedDiv">🔌【Puertos Dual Quick Charge 3.0 USB】El cargador USB dual para motocicleta cuenta con 2 puertos USB, ofreciendo una carga 4 veces más rápida que los cargadores convencionales.
+
+📊【Pantalla de Voltaje en Tiempo Real】El voltímetro inteligente incorporado con pantalla LED digital te muestra el estado de voltaje de la batería o el alternador en tiempo real mientras conduces, ayudando a evitar problemas de voltaje anormal.
+
+🔥【Material de Alta Calidad】La capa exterior del cargador está hecha de material ABS ecológico, resistente a altas y bajas temperaturas, evitando sobrecalentamientos. Estabilidad y seguridad mejoradas. Equipado con una cubierta plástica, es impermeable y a prueba de polvo.
+
+🔧【Fácil Instalación】Dos métodos de instalación: montaje en el manillar y montaje con tornillo. Solo necesitas fijar el USB y conectar los polos positivo y negativo del cable a la fuente de alimentación. Incluye un interruptor para encender o apagar cuando desees, ayudando a ahorrar energía.
+
+🌍【Aplicación Universal】Voltaje de salida: 5V / 3.4A, 9V / 2.5A, 12V / 2A. Puede cargar casi cualquier teléfono, GPS, tableta, cámara, etc. y es compatible con vehículos de DC12V como motocicletas, ATV, SUV, barcos, entre otros</div>
 <!-- Carrusel de imágenes del artículo -->
 <div class="carousel">
     <button class="left" onclick="prevImage()">⬅️</button>
     <img id="itemImage" src="imagenes/cargador-usb-moto-portada.png" alt="Imagen del artículo">
     <button class="right" id="botonCambiarImagen" >➡️</button>
 </div>
-
+<br/>
+<h4>Datos para comprar el producto:</h4>
 <form id="compraForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     
     <!-- Paso 1: Nombre Completo -->
@@ -208,6 +262,16 @@ try {
 
 const boton = document.getElementById("botonCambiarImagen");
 boton.addEventListener("click", actualizarImagen);
+
+        function setStarRating(rating) {
+            const stars = document.querySelectorAll("#star-rating .star-filled");
+            stars.forEach((star, index) => {
+                const starPercentage = Math.min(100, Math.max(0, (rating - index) * 100));
+                star.style.width = `${starPercentage}%`;
+            });
+        }
+
+        setStarRating(4.3); // Ajusta este valor a la calificación deseada
 
 
 </script>
