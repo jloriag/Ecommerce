@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de Estrellas Dinámica</title>
+    <style>
+        .stars {
+            display: inline-block;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .star {
+            color: lightgray; /* Color para estrellas "vacías" */
+            position: relative;
+        }
+        .star::before {
+            content: "★";
+        }
+        .star-filled {
+            color: gold; /* Color para estrellas "llenas" */
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            width: 0%; /* Ancho inicial */
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="star-rating">
+        <!-- Estrellas con contenido ajustable -->
+        <span class="star"><span class="star-filled">★</span></span>
+        <span class="star"><span class="star-filled">★</span></span>
+        <span class="star"><span class="star-filled">★</span></span>
+        <span class="star"><span class="star-filled">★</span></span>
+        <span class="star"><span class="star-filled">★</span></span>
+    </div>
+
+    <script>
+        function setStarRating(rating) {
+            const stars = document.querySelectorAll("#star-rating .star-filled");
+            stars.forEach((star, index) => {
+                const starPercentage = Math.min(100, Math.max(0, (rating - index) * 100));
+                star.style.width = `${starPercentage}%`;
+            });
+        }
+
+        setStarRating(3.6); // Ajusta este valor a la calificación deseada
+    </script>
+</body>
+</html>
