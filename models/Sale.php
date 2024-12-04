@@ -1,10 +1,9 @@
 <?php
 require_once('BaseModel.php');
-
 class Product extends BaseModel
 {
     private $apiUrl = "http://localhost/laravel11-app/public/api/products";
-    
+
     // Obtener lista de productos desde la API
     public function getAllProducts()
     {
