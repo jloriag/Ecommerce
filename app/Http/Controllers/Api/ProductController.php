@@ -47,7 +47,7 @@ class ProductController extends Controller
   }
 
   public function show(Product $product){
-    $product->state();
+       $product->state();
         return new ProductResource($product);
   }
 
@@ -96,16 +96,15 @@ class ProductController extends Controller
       $fileName = uniqid() . '.' . $imageType;
 
       // Save the image to the storage (you can use public or private storage)
-      Storage::disk('public')->put('products/' . $fileName, $imageBase64);
+      Storage::disk('public')->put('images/products/' . $fileName, $imageBase64);
 
       // Return success response with the saved file URL
-      $filePath = Storage::url('products/' . $fileName);
+      $filePath = Storage::url('app/public/images/products/' . $fileName);
           Image::create([
               'product_id'=>$product->id,
               'path'=>$filePath
           ]);
       }
-
   }
 
   private function fields(Request $request){
