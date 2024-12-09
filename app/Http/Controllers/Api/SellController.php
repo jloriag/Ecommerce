@@ -13,7 +13,13 @@ class SellController extends Controller {
      * Display a listing of the resource.
      */
     public function index() {
-        //
+        $sells = Sell::all();
+
+        if ($sells->count() > 0) {
+            return SellResource::collection($sells);
+        } else {
+            return response()->json(['message' => 'No record available'], 200);
+        }
     }
 
     /**
@@ -28,7 +34,7 @@ class SellController extends Controller {
      */
     public function store(Request $request) {
         $sell = Sell::create($this->fields($request));
-        
+
         // Respuesta de éxito
         return response()->json([
                     'message' => 'Product created successfully',
