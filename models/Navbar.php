@@ -2,7 +2,7 @@
 require_once('BaseModel.php');
 class Navbar extends BaseModel
 {
-    private $apiUrl = "http://localhost/laravel11-app/public/api/products";
+    private $apiUrl = "https://jloriag.com/laravel-api/public/api/products";
 
     // Obtener lista de productos desde la API
     public function getAllProducts()

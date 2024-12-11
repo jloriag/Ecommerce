@@ -80,6 +80,8 @@ $isMultipleImages = $countImages > 1;
                     </div>
                     <form action="index.php?action=sale" id="stepForm">
                         <input type="hidden" id="product_id" value="<?= $product['id'] ?>"/>
+                        <input type="hidden" id="paid_method" name="paid_method" value="por definir"/>
+                        <input type="hidden" id="state" name="state" value="solicitado"/>
                         <!-- Step 1 -->
                         <div class="step active">
                             <h3>Paso 1</h3>
@@ -223,6 +225,11 @@ $isMultipleImages = $countImages > 1;
 
                 // Recopila los datos del formulario
                 const formData = new FormData(e.target);
+                
+                // Ver los datos en consola
+                for (let [key, value] of formData.entries()) {
+                  console.log(key, value);
+                }
 
                 try {
                     // Enviar datos con Fetch API

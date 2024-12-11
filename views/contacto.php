@@ -22,7 +22,7 @@ require 'baseProductsVariables.php';
                 <div class="row g-0">
                     <!-- Imagen de la persona -->
                     <div class="col-md-4">
-                        <img src="http://localhost/Ecommerce/imagenes/Josue.jpg" alt="Foto de Persona" class="img-fluid rounded-start" style="height: 100%; object-fit: cover;">
+                        <img src="http://127.0.0.1/Ecommerce/imagenes/Josue.jpg" alt="Foto de Persona" class="img-fluid rounded-start" style="height: 100%; object-fit: cover;">
                     </div>
                     <!-- Información de contacto -->
                     <div class="col-md-8">

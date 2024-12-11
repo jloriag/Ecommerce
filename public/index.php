@@ -18,4 +18,5 @@ if (isset($_GET['action'])) {
     require_once __DIR__ . '/../controllers/ProductController.php';
     $controller = new ProductController();
     $controller->index();
+    echo "Hola";
 }

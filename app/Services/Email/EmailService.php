@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Email;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -9,9 +9,6 @@ class EmailService extends PHPMailer {
 
     public function __construct() {
         parent::__construct(true);
-    }
-
-    public function sendEmail() {
         // Configuración del servidor SMTP de Gmail
         $this->isSMTP();
         $this->Host = 'smtp.gmail.com';
@@ -21,8 +18,12 @@ class EmailService extends PHPMailer {
         $this->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Habilita TLS en Gmail
         $this->Port = 587; // Puerto de Gmail para TLS
         $this->isHTML(true);
-        // Configuración del correo
+        
         $this->setFrom('jozzlg@gmail.com', 'Josue');
+    }
+
+    public function sendEmail() {
+ 
         $this->addAddress('jozzlg@gmail.com', 'Josue Loria'); // Añadir destinatario
 
         $this->Subject = 'Compra de articulo';
@@ -46,4 +47,6 @@ class EmailService extends PHPMailer {
         // Convertir el array a JSON y enviarlo como respuesta
         return json_encode($response);
     }
+    
+
 }

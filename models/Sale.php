@@ -1,21 +1,28 @@
 <?php
+
 require_once('BaseModel.php');
-class Product extends BaseModel
-{
-    private $apiUrl = "http://localhost/laravel11-app/public/api/products";
 
-    // Obtener lista de productos desde la API
-    public function getAllProducts()
-    {
-        $response = file_get_contents($this->apiUrl);
-        return json_decode($response, true)['data'];
-    }
+class Sale extends BaseModel {
 
-    // Obtener un producto por ID desde la API
-    public function getProductById($id)
-    {
-        $response = file_get_contents($this->apiUrl . "/" . $id);
-        return json_decode($response, true)['data'];
+
+    public function create($paid_method,$state) {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://jloriag.com/laravel-api/public/api/sells',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array('paid_method' => $paid_method, 'state' => $state),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
     }
 }
-?>
