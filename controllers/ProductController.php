@@ -27,5 +27,10 @@ class ProductController
         $productModel=$this->productModel;
         include __DIR__ . '/../views/product-detail.php';
     }
+    
+    public function create(){
+        $ecommerceData=$this->productModel->getEcommerceData();
+        include __DIR__ . '/../views/product-create.php';
+    }
 }
 ?>

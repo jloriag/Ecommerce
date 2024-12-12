@@ -2,6 +2,8 @@
 
 namespace App\Services\Email;
 
+require_once __DIR__ . '/../../../models/Product.php';
+
 class SaleEmailService extends EmailService {
 
     private $product_id;
@@ -11,11 +13,13 @@ class SaleEmailService extends EmailService {
     public function __construct($product_id, $sale_id, $_email, $_full_name) {
         parent::__construct();
         $this->product_id = $product_id;
+        $productModel=new \Product();
+        $product=$productModel->getProductById($this->product_id);
         $this->sale_id = $sale_id;
         $this->email = $_email;
         $this->addAddress($_email, $_full_name); // Añadir destinatario
-        $this->Subject = 'Compra de articulo';
-        $this->Body = $this->buildSellHtml("Titulo del producto", "Precio", "Descripcion");
+        $this->Subject = 'Han comprado el producto: '.$product['name'];
+        $this->Body = $this->buildSellHtml($product['name'], $product['price'], $product['description']);
     }
 
     public function sendEmail() {

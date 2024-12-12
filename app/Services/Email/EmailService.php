@@ -5,6 +5,7 @@ namespace App\Services\Email;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+
 class EmailService extends PHPMailer {
 
     public function __construct() {
