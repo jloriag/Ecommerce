@@ -36,6 +36,7 @@ class Product extends BaseModel {
                 'description' => $_POST['description'],
                 'price' => $_POST['price'],
                 'amount' => $_POST['amount'],
+                'sku'=>$_POST['sku'],
                 'state_id' => '1',
                 'brand' => $_POST['brand'],
                 'images[]' => $_POST['images[]']),
@@ -44,8 +45,6 @@ class Product extends BaseModel {
         $response = curl_exec($curl);
 
         curl_close($curl);
-        return $response;
+        return json_decode($response, true);
     }
 }
-
-?>
