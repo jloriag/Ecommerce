@@ -10,6 +10,10 @@ if (isset($_GET['action'])) {
         require_once __DIR__ . '/../controllers/ProductController.php';
         $controller = new ProductController();
         $controller->create();
+    } else if ($_GET['action'] == 'saveProduct') {
+        require_once __DIR__ . '/../controllers/ProductController.php';
+        $controller = new ProductController();
+        $controller->save();
     } else if ($_GET['action'] === 'sale') {
         require_once __DIR__ . '/../controllers/SaleController.php';
         $controller = new SaleController();

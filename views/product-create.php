@@ -43,12 +43,12 @@ $icon = $productModel::APP_URL . $ecommerceData['webpage_icon'];
 
                     <div class="mb-3">
                         <label for="name" class="form-label">Marca:</label>
-                        <input type="number" class="form-control" id="marca" name="marca" required>
+                        <input type="number" class="form-control" id="brand" name="brand" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="name" class="form-label">Cantidad:</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                        <input type="number" class="form-control" id="amount" name="amount" required>
                     </div>
 
                     <div class="mb-3">
@@ -57,8 +57,8 @@ $icon = $productModel::APP_URL . $ecommerceData['webpage_icon'];
                     </div>
 
                     <div class="mb-3">
-                        <label for="image_path" class="form-label">Ruta de la Imagen:</label>
-                        <input type="file" class="form-control" id="image_path" name="image_path[]" multiple required>
+                        <label for="images" class="form-label">Ruta de la Imagen:</label>
+                        <input type="file" class="form-control" id="images" name="images[]" multiple required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>

@@ -35,6 +35,8 @@ class ProductController
     }
     
     public function save(){
-        
+        $ecommerceData=$this->productModel->getEcommerceData();
+        $productModel=$this->productModel;
+        echo $productModel->saveProduct();
     }
 }
