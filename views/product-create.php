@@ -4,7 +4,6 @@ require 'baseProductsVariables.php';
 $css_url = $protocol . "://" . $host . $directory . "/../boostrap/css/bootstrap.min.css";
 
 $icon = $productModel::APP_URL . $ecommerceData['webpage_icon'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,22 +24,44 @@ $icon = $productModel::APP_URL . $ecommerceData['webpage_icon'];
         <div class="container">
             <h1 class="my-4">Crear un nuevo Producto</h1>
             <div class="row">
-                <?php if ($isProducts): ?>
-                    <?php foreach ($products as $product): ?>
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <div class="card-body">
-                                    <img src="<?= $productModel::APP_URL . $product['images'][0]['path'] ?>" class="img-thumbnail" alt="Imagen en miniatura">
-                                    <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
-                                    <p class="card-text"> ₡ <?= htmlspecialchars($product['price']) ?></p>
-                                    <a href="index.php?action=show&id=<?= $product['id'] ?>" class="btn btn-primary">Ver detalles</a>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No hay productos</p>
-                <?php endif; ?>
+                <form method="post" action="index.php?action=saveProduct" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre del Producto:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Descripción del Producto:</label>
+                        <input type="text" class="form-control" id="description" name="description" required>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Precio del Producto:</label>
+                        <input type="number" class="form-control" id="price" name="price" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Marca:</label>
+                        <input type="number" class="form-control" id="marca" name="marca" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Cantidad:</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Sku:</label>
+                        <input type="number" class="form-control" id="sku" name="sku" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image_path" class="form-label">Ruta de la Imagen:</label>
+                        <input type="file" class="form-control" id="image_path" name="image_path[]" multiple required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

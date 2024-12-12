@@ -30,7 +30,11 @@ class ProductController
     
     public function create(){
         $ecommerceData=$this->productModel->getEcommerceData();
+        $productModel=$this->productModel;
         include __DIR__ . '/../views/product-create.php';
     }
+    
+    public function save(){
+        
+    }
 }
-?>
