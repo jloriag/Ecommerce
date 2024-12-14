@@ -19,18 +19,7 @@ class Product extends BaseModel {
 
     public function saveProduct($name,$description,$price,$amount,$sku,$brand,$images) {
         
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://jloriag.com/laravel-api/public/api/products',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array(
+        return $this->postRequest(array(
                 'name' => $name,
                 'description' => $description,
                 'price' => $price,
@@ -38,12 +27,11 @@ class Product extends BaseModel {
                 'sku'=>$sku,
                 'state_id' => '1',
                 'brand' => $brand,
-                'images[]' => $images),
-        ));
+                'images[]' => $images));
+    }
 
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-        return json_decode($response, true);
+    #[\Override]
+    public function path() {
+        return "/public/api/products";
     }
 }

@@ -25,4 +25,9 @@ class Sale extends BaseModel {
         curl_close($curl);
         echo $response;
     }
+
+    #[\Override]
+    public function path() {
+        
+    }
 }
