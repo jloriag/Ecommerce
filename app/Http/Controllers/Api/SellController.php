@@ -14,7 +14,6 @@ class SellController extends Controller {
      */
     public function index() {
         $sells = Sell::all();
-
         if ($sells->count() > 0) {
             return SellResource::collection($sells);
         } else {
