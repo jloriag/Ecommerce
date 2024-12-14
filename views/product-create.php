@@ -42,8 +42,8 @@ $icon = $productModel::APP_URL . $ecommerceData['webpage_icon'];
                     </div>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Marca:</label>
-                        <input type="number" class="form-control" id="brand" name="brand" required>
+                        <label for="brand" class="form-label">Marca:</label>
+                        <input type="text" class="form-control" id="brand" name="brand" required>
                     </div>
 
                     <div class="mb-3">
@@ -52,8 +52,8 @@ $icon = $productModel::APP_URL . $ecommerceData['webpage_icon'];
                     </div>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Sku:</label>
-                        <input type="number" class="form-control" id="sku" name="sku" required>
+                        <label for="sku" class="form-label">Sku:</label>
+                        <input type="text" class="form-control" id="sku" name="sku" required>
                     </div>
 
                     <div class="mb-3">

@@ -17,8 +17,8 @@ class Product extends BaseModel {
         return json_decode($response, true)['data'];
     }
 
-    public function saveProduct() {
-
+    public function saveProduct($name,$description,$price,$amount,$sku,$brand,$images) {
+        
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -31,14 +31,14 @@ class Product extends BaseModel {
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'name' => $_POST['name'],
-                'description' => $_POST['description'],
-                'price' => $_POST['price'],
-                'amount' => $_POST['amount'],
-                'sku'=>$_POST['sku'],
+                'name' => $name,
+                'description' => $description,
+                'price' => $price,
+                'amount' => $amount,
+                'sku'=>$sku,
                 'state_id' => '1',
-                'brand' => $_POST['brand'],
-                'images[]' => $_POST['images[]']),
+                'brand' => $brand,
+                'images[]' => $images),
         ));
 
         $response = curl_exec($curl);

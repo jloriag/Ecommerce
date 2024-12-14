@@ -34,7 +34,7 @@ $isProducts = count($products) > 0;
                                     <img src="<?= $productModel::APP_URL . $product['images'][0]['path'] ?>" class="img-thumbnail" alt="Imagen en miniatura">
                                     <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
                                     <p class="card-text"> ₡ <?= htmlspecialchars($product['price']) ?></p>
-                                    <a href="index.php?action=show&id=<?= $product['id'] ?>" class="btn btn-primary">Ver detalles</a>
+                                    <a href="index.php?action=showProduct&id=<?= $product['id'] ?>" class="btn btn-primary">Ver detalles</a>
                                 </div>
                             </div>
                         </div>
