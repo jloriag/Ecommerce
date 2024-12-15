@@ -3,18 +3,14 @@
 require_once('BaseModel.php');
 class Product extends BaseModel {
 
-    private $apiUrl = "https://jloriag.com/laravel-api/public/api/products";
-
     // Obtener lista de productos desde la API
     public function getAllProducts() {
-        $response = file_get_contents($this->apiUrl);
-        return json_decode($response, true)['data'];
+        return $this->getRequest()['data'];
     }
 
     // Obtener un producto por ID desde la API
     public function getProductById($id) {
-        $response = file_get_contents($this->apiUrl . "/" . $id);
-        return json_decode($response, true)['data'];
+        return $this->getRequest($id)['data'];
     }
 
     public function saveProduct($name,$description,$price,$amount,$sku,$brand,$images) {
@@ -31,7 +27,11 @@ class Product extends BaseModel {
     }
 
     #[\Override]
-    public function path() {
-        return "/public/api/products";
+    public function path($param="") {
+        if(empty($param)){
+           return "/public/api/products"; 
+        }else{
+            return "/public/api/products"."/".$param; 
+        }
     }
 }

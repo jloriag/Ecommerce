@@ -113,6 +113,12 @@ $isMultipleImages = $countImages > 1;
                             <button type="button" class="btn btn-secondary prev-step">Anterior</button>
                             <button type="submit" class="btn btn-success">Enviar</button>
                         </div>
+
+                        <div class="step">
+                            <div class="alert alert-success" role="alert">
+                                <strong>¡Éxito!</strong> Los datos se han enviado y te contactarán en breve para que recibas tu producto.
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -223,12 +229,13 @@ $isMultipleImages = $countImages > 1;
                     return;
                 }
 
+                steps[currentStep].classList.remove('active');
                 // Recopila los datos del formulario
                 const formData = new FormData(e.target);
-                
+
                 // Ver los datos en consola
                 for (let [key, value] of formData.entries()) {
-                  console.log(key, value);
+                    console.log(key, value);
                 }
 
                 try {
@@ -242,11 +249,12 @@ $isMultipleImages = $countImages > 1;
                         throw new Error(`Error en el servidor: ${response.status}`);
                     }
 
-                   // const result = await response.json(); // Cambia según el tipo de respuesta
+                    // const result = await response.json(); // Cambia según el tipo de respuesta
                     console.log('Respuesta del servidor:', response);
 
                     // Mostrar un mensaje de éxito
-                    alert('Formulario enviado exitosamente');
+                    steps[++currentStep].classList.add('active');
+                    updateProgressBar();
                 } catch (error) {
                     console.error('Error al enviar el formulario:', error);
                     alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');

@@ -11,7 +11,7 @@ abstract class BaseModel {
         return json_decode($response, true)['data'];
     }
 
-    abstract function path();
+    abstract function path($param="");
 
     protected function postRequest($postfields) {
         $this->curl = curl_init();
@@ -25,6 +25,22 @@ abstract class BaseModel {
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => $postfields));
+        $response = curl_exec($this->curl);
+        curl_close($this->curl);
+        return json_decode($response, true);
+    }
+    
+    protected function getRequest($param="") {
+        $this->curl = curl_init();
+        curl_setopt_array($this->curl, array(
+            CURLOPT_URL => self::APP_URL . $this->path($param),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET'));
         $response = curl_exec($this->curl);
         curl_close($this->curl);
         return json_decode($response, true);
