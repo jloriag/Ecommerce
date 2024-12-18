@@ -22,6 +22,14 @@ if (isset($_GET['action'])) {
         require_once __DIR__ . '/../controllers/ContactController.php';
         $controller = new ContactController();
         $controller->index();
+    }else if ($_GET['action'] === 'login'){
+        require_once __DIR__ . '/../controllers/UserController.php';
+        $controller = new UserController();
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            
+        }else{
+            $controller->login();
+        }
     }
 } else {
     require_once __DIR__ . '/../controllers/ProductController.php';

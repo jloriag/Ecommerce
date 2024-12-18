@@ -11,4 +11,6 @@ $directory = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
 $css_url = $protocol . "://" . $host . $directory . "/../boostrap/css/bootstrap.min.css";
 
+$js_url = $protocol . "://" . $host . $directory . "/../boostrap/js/bootstrap.bundle.min.js";
+
 $request_url=$_SERVER['REQUEST_URI'];

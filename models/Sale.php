@@ -11,7 +11,7 @@ class Sale extends BaseModel {
     }
 
     #[\Override]
-    public function path() {
+    public function path($param="") {
         return "/public/api/sells";
     }
 }

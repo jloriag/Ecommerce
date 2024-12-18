@@ -16,13 +16,10 @@ $isProducts = count($products) > 0;
         <link rel="icon" href="<?= $icon ?>" type="image/png">
     </head>
     <body>
-        <?php include 'navbar.php'; ?>
-        <!-- Encabezado de la tienda -->
-        <header class="bg-primary text-white text-center py-5">
-            <h1>Bienvenido a Mi Tienda</h1>
-            <p>Los mejores productos al mejor precio</p>
-        </header>
-
+        <?php 
+        include 'navbar.php'; 
+        include 'header.php';
+        ?>
         <div class="container">
             <h1 class="my-4">Listado de Productos</h1>
             <div class="row">
@@ -44,11 +41,8 @@ $isProducts = count($products) > 0;
                 <?php endif; ?>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="<?= $js_url ?>"></script>
 
-        <!-- Pie de página -->
-        <footer class="bg-dark text-white text-center py-4">
-            <p>&copy; 2024 Mi Tienda. Todos los derechos reservados.</p>
-        </footer>
+        <?php include "footer.php" ?>
     </body>
 </html>
