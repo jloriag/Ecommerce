@@ -3,8 +3,6 @@ require 'baseProductsVariables.php';
 
 $productName = htmlspecialchars($product['name']);
 
-$icon = $productModel::APP_URL . $ecommerceData['webpage_icon'];
-
 $countImages = count($product['images']);
 
 $isMultipleImages = $countImages > 1;
@@ -23,7 +21,7 @@ $isMultipleImages = $countImages > 1;
                 display: block;
             }
         </style>
-        <link rel="icon" href="<?= $icon ?>" type="image/png">
+        <link rel="icon" href="https://jloriag.com/laravel-api/storage/app/public/images/general/favicon/675639114b32c.png" type="image/png">
     </head>
     <body>
         <?php 

@@ -1,5 +1,7 @@
 <?php
 require 'baseProductsVariables.php';
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +9,7 @@ require 'baseProductsVariables.php';
         <meta charset="UTF-8">
         <title>Contacto</title>
         <link rel="stylesheet" href="<?= $css_url ?>">
+        <link rel="icon" href="https://jloriag.com/laravel-api/storage/app/public/images/general/favicon/675639114b32c.png" type="image/png">
     </head>
     <body>
         <?php 
