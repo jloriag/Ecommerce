@@ -8,6 +8,7 @@ class ProductModelTest extends TestCase {
 
     private $productModel;
 
+    #[\Override]
     protected function setUp(): void {
         $this->productModel = new Product();
     }
