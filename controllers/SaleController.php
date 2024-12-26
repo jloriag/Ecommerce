@@ -10,7 +10,7 @@ class SaleController {
     private $saleModel;
     
     public function __construct() {
-        $this->emailService=new SaleEmailService(1,1,"jloriag@hotmail.com","Josue Eduardo Loria");
+        $this->emailService=new SaleEmailService($_POST['product_id'],1,"jloriag@hotmail.com","Josue",$_POST['tel'],$_POST['name'],$_POST['address']);
         $this->saleModel=new Sale();
     }
     

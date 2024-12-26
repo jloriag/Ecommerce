@@ -71,10 +71,10 @@ $isMultipleImages = $countImages > 1;
 
                     <h2 class="text-center mb-4">Compra este producto facilmente</h2>
                     <div class="progress mb-4">
-                        <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">Paso 1 de 3</div>
+                        <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">Paso 1 de 4</div>
                     </div>
                     <form action="index.php?action=sale" id="stepForm">
-                        <input type="hidden" id="product_id" value="<?= $product['id'] ?>"/>
+                        <input type="hidden" id="product_id" name="product_id" value="<?= $product['id'] ?>"/>
                         <input type="hidden" id="paid_method" name="paid_method" value="por definir"/>
                         <input type="hidden" id="state" name="state" value="solicitado"/>
                         <!-- Step 1 -->
@@ -82,7 +82,7 @@ $isMultipleImages = $countImages > 1;
                             <h3>Paso 1</h3>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nombre completo</label>
-                                <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre completo">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Ingresa tu nombre completo">
                             </div>
                             <button type="button" class="btn btn-primary next-step" id="showToast">Siguiente</button>
                         </div>
@@ -92,7 +92,7 @@ $isMultipleImages = $countImages > 1;
                             <h3>Paso 2</h3>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Número telefónico</label>
-                                <input type="tel" class="form-control" id="tel" placeholder="Ingresa tu numero telefónico">
+                                <input type="tel" class="form-control" id="tel" name="tel" placeholder="Ingresa tu numero telefónico">
                             </div>
                             <button type="button" class="btn btn-secondary prev-step">Anterior</button>
                             <button type="button" class="btn btn-primary next-step">Siguiente</button>
@@ -103,7 +103,7 @@ $isMultipleImages = $countImages > 1;
                             <h3>Paso 3</h3>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Dirección Exacta</label>
-                                <input type="text" class="form-control" id="address" placeholder="Dirección Exacta">
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Dirección Exacta">
                             </div>
                             <button type="button" class="btn btn-secondary prev-step">Anterior</button>
                             <button type="submit" class="btn btn-success">Enviar</button>
