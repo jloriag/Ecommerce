@@ -1,7 +1,23 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-if (isset($_GET['action'])) {
+
+// Captura la URL después del dominio
+$request = trim($_SERVER['REQUEST_URI'], '/');
+
+// Divide la URL en segmentos
+$segments = explode('/', $request);
+
+// Ejemplo: manejar la URL basada en segmentos
+if ($segments[1] === 'producto' && isset($segments[2])) {
+    $productId = intval($segments[2]);
+    // Lógica para mostrar el producto
+    echo "Producto ID: " . $productId;
+} elseif ($segments[0] === 'category' && isset($segments[1])) {
+    $category = $segments[1];
+    // Lógica para mostrar la categoría
+    echo "Categoría: " . htmlspecialchars($category);
+} else if (isset($_GET['action'])) {
     if ($_GET['action'] === 'showProduct' && isset($_GET['id'])) {
         require_once __DIR__ . '/../controllers/ProductController.php';
         $controller = new ProductController();

@@ -46,10 +46,10 @@ class SaleEmailService extends EmailService {
         ob_start();
         ?>
         <p>Han solicitado el producto <strong><?= htmlspecialchars($product_title, ENT_QUOTES, 'UTF-8') ?></strong> con un valor de <?= htmlspecialchars($product_price, ENT_QUOTES, 'UTF-8') ?></p>
-        <p>La descripción del producto es: <strong><?= htmlspecialchars($product_description, ENT_QUOTES, 'UTF-8') ?></strong></p>
-        <p>El teléfono es: <?= $_tel ?></p>
+        <p>La descripci&oacute;n del producto es: <strong><?= htmlspecialchars($product_description, ENT_QUOTES, 'UTF-8') ?></strong></p>
+        <p>El tel&eacute;fono es: <?= $_tel ?></p>
         <p>El cliente se llama: <?= $_client_name ?></p>
-        <p>La ubicación es: <?= $_place ?></p>
+        <p>La ubicaci&oacute;n es: <?= $_place ?></p>
         <?php
         // Capturar el contenido del buffer y almacenarlo en una variable
         $html = ob_get_clean();
