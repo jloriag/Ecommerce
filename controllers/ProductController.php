@@ -13,27 +13,23 @@ class ProductController {
     // Método para mostrar la lista de productos
     public function index() {
         $products = $this->productModel->getAllProducts();
-        $ecommerceData = $this->productModel->getEcommerceData();
         $productModel = $this->productModel;
         include __DIR__ . '/../views/product-list.php';
     }
 
     // Método para mostrar el detalle de un producto
     public function show($id) {
-        $ecommerceData = $this->productModel->getEcommerceData();
         $product = $this->productModel->getProductById($id);
         $productModel = $this->productModel;
         include __DIR__ . '/../views/product-detail.php';
     }
 
     public function create() {
-        $ecommerceData = $this->productModel->getEcommerceData();
         $productModel = $this->productModel;
         include __DIR__ . '/../views/product-create.php';
     }
 
     public function save() {
-        $ecommerceData = $this->productModel->getEcommerceData();
         $productModel = $this->productModel;
 
         if (isset($_FILES['images']) && count($_FILES['images']['name']) > 0) {

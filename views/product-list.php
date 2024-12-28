@@ -3,8 +3,6 @@ require 'baseProductsVariables.php';
 
 $css_url = $protocol . "://" . $host . $directory . "/../boostrap/css/bootstrap.min.css";
 
-$icon = $productModel::APP_URL . $ecommerceData['webpage_icon'];
-
 $isProducts = count($products) > 0;
 ?>
 <!DOCTYPE html>
@@ -13,7 +11,7 @@ $isProducts = count($products) > 0;
         <meta charset="UTF-8">
         <title>Listado de Productos</title>
         <link rel="stylesheet" href="<?= $css_url ?>">
-        <link rel="icon" href="<?= $icon ?>" type="image/png">
+       <link rel="icon" href="https://jloriag.com/laravel-api/storage/app/public/images/general/favicon/675639114b32c.png" type="image/png">
     </head>
     <body>
         <?php 

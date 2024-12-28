@@ -10,6 +10,7 @@ class SaleEmailService extends EmailService {
     private $sale_id;
     private $email;
 
+    #[\Override]
     public function __construct($product_id, $sale_id, $_email, $_full_name,$_tel,$client_name,$_place) {
         parent::__construct();
         $this->product_id = $product_id;
@@ -22,23 +23,15 @@ class SaleEmailService extends EmailService {
         $this->Body = $this->buildSellHtml($product['name'], $product['price'], $product['description'],$_tel,$client_name,$_place);
     }
 
+    #[\Override]
     public function sendEmail() {
-        $this->send();
-        // Configurar encabezado para indicar que la respuesta es JSON
-        header('Content-Type: application/json');
-
-        // Datos que deseas enviar como JSON
-        $response = [
-            'status' => 'success',
-            'message' => 'Formulario enviado correctamente',
-            'data' => [
-                'userId' => 123,
-                'userName' => 'Josué Loría',
-            ]
-        ];
-
-        // Convertir el array a JSON y enviarlo como respuesta
-        return json_encode($response);
+        try {
+            $isSuccessfull = $this->send();
+        } catch (Exception $e) {
+            $isSuccessfull = false;
+            throw new Exception($e);
+        }
+        return $isSuccessfull;
     }
 
     public function buildSellHtml($product_title, $product_price, $product_description,$_tel, $_client_name,$_place) {
