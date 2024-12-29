@@ -10,7 +10,6 @@ class SaleEmailService extends EmailService {
     private $sale_id;
     private $email;
 
-    #[\Override]
     public function __construct($product_id, $sale_id, $_email, $_full_name,$_tel,$client_name,$_place) {
         parent::__construct();
         $this->product_id = $product_id;
