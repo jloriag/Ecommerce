@@ -1,13 +1,19 @@
 <?php
 
+
 abstract class BaseModel {
 
-    public const APP_URL = "https://jloriag.com/laravel-api";
+    
+    public function __construct() {
+        $this->config = require __DIR__ . '/../config/config.php';
+    }
 
     private $curl;
+    
+    protected $config;
 
     public function getEcommerceData() {
-        $response = file_get_contents("https://jloriag.com/laravel-api/public/api/ecommercedata/1");
+        $response = file_get_contents("{$this->config['app']['api']}public/api/ecommercedata/1");
         return json_decode($response, true)['data'];
     }
 
@@ -16,7 +22,7 @@ abstract class BaseModel {
     protected function postRequest($postfields) {
         $this->curl = curl_init();
         curl_setopt_array($this->curl, array(
-            CURLOPT_URL => self::APP_URL . $this->path(),
+            CURLOPT_URL => $this->config['app']['api'] . $this->path(),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -33,7 +39,7 @@ abstract class BaseModel {
     protected function getRequest($param="") {
         $this->curl = curl_init();
         curl_setopt_array($this->curl, array(
-            CURLOPT_URL => self::APP_URL . $this->path($param),
+            CURLOPT_URL => $this->config['app']['api'] . $this->path($param),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -45,4 +51,10 @@ abstract class BaseModel {
         curl_close($this->curl);
         return json_decode($response, true);
     }
+    
+    public function getConfig() {
+        return $this->config;
+    }
+
+
 }

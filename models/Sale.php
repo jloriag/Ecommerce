@@ -4,6 +4,10 @@ require_once('BaseModel.php');
 
 class Sale extends BaseModel {
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function create($paid_method, $state) {
         return $this->postRequest(array(
                     'paid_method' => $paid_method,
@@ -11,7 +15,7 @@ class Sale extends BaseModel {
     }
 
     #[\Override]
-    public function path($param="") {
+    public function path($param = "") {
         return "/public/api/sells";
     }
 }

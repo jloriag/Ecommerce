@@ -26,7 +26,7 @@ $isProducts = count($products) > 0;
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
                                 <div class="card-body">
-                                    <img src="<?= $productModel::APP_URL . $product['images'][0]['path'] ?>" class="img-thumbnail" alt="Imagen en miniatura">
+                                    <img src="<?= $productModel->getConfig()['app']['api'] . $product['images'][0]['path'] ?>" class="img-thumbnail" alt="Imagen en miniatura">
                                     <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
                                     <p class="card-text"> ₡ <?= htmlspecialchars($product['price']) ?></p>
                                     <a href="index.php?action=showProduct&id=<?= $product['id'] ?>" class="btn btn-primary">Ver detalles</a>

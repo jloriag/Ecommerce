@@ -2,8 +2,12 @@
 
 require_once('BaseModel.php');
 class Product extends BaseModel {
+    
+    public function __construct() {
+        parent::__construct();
+    }
 
-    // Obtener lista de productos desde la API
+        // Obtener lista de productos desde la API
     public function getAllProducts() {
         return $this->getRequest()['data'];
     }

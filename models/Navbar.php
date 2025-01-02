@@ -17,5 +17,10 @@ class Navbar extends BaseModel
         $response = file_get_contents($this->apiUrl . "/" . $id);
         return json_decode($response, true)['data'];
     }
+
+    #[\Override]
+    public function path($param = "") {
+        
+    }
 }
 ?>

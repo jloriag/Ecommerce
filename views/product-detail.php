@@ -46,7 +46,7 @@ $isMultipleImages = $countImages > 1;
                         <div class="carousel-inner">
                             <?php foreach ($product['images'] as $productimage): ?>  
                                 <div class="carousel-item active">
-                                    <img src="<?= $productModel::APP_URL . $productimage['path'] ?>" class="d-block w-100" alt="">
+                                    <img src="<?= $productModel->getConfig()['app']['api'] . $productimage['path'] ?>" class="d-block w-100" alt="">
                                 </div>
                             <?php endforeach; ?>
                         </div>
